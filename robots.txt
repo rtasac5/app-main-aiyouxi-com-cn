@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://rtasac5.github.io/app-main-aiyouxi-com-cn/sitemap.xml

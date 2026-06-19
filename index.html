@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 资料索引手记</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      background: linear-gradient(145deg, #fbe9d7 0%, #f3d2b5 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1.2rem;
+      line-height: 1.8;
+      color: #2d2a26;
+    }
+
+    .page-card {
+      max-width: 820px;
+      width: 100%;
+      background: #fffffffa;
+      backdrop-filter: blur(2px);
+      border-radius: 36px 36px 28px 28px;
+      box-shadow: 0 18px 36px -12px rgba(160, 100, 60, 0.28);
+      padding: 2.8rem 2.6rem;
+      margin-bottom: 2rem;
+      transition: box-shadow 0.2s;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1.2rem 0.8rem;
+      }
+      .page-card {
+        padding: 2rem 1.5rem;
+        border-radius: 28px;
+      }
+    }
+
+    /* 标题区 */
+    .note-header {
+      margin-bottom: 2.2rem;
+      border-bottom: 2px dashed #ecd6be;
+      padding-bottom: 1.2rem;
+    }
+
+    .note-header h1 {
+      font-size: 2.2rem;
+      font-weight: 480;
+      letter-spacing: 1px;
+      color: #7b4f32;
+      line-height: 1.2;
+      margin-bottom: 0.3rem;
+    }
+
+    .note-header h1 small {
+      font-size: 1.1rem;
+      font-weight: 360;
+      color: #aa7f61;
+      display: inline-block;
+      margin-left: 0.5rem;
+    }
+
+    .lead {
+      font-size: 1.1rem;
+      color: #6f5543;
+      background: #faf0e7;
+      padding: 0.5rem 1rem;
+      border-radius: 40px;
+      display: inline-block;
+      margin-top: 0.2rem;
+    }
+
+    /* 正文排版 */
+    .content p {
+      margin-bottom: 1.4rem;
+      font-size: 1.05rem;
+    }
+
+    .content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .inset-quote {
+      background: #f8ede2;
+      border-left: 4px solid #c9916b;
+      padding: 1rem 1.6rem;
+      margin: 1.8rem 0;
+      border-radius: 0 20px 20px 0;
+      font-style: normal;
+      color: #4b3b30;
+      font-size: 1rem;
+    }
+
+    .inset-quote cite {
+      display: block;
+      margin-top: 0.4rem;
+      font-size: 0.9rem;
+      color: #8d705a;
+      font-style: normal;
+    }
+
+    .highlight-link {
+      color: #a5653c;
+      background: linear-gradient(to right, #f1ddd0, transparent);
+      padding: 0.1rem 0.3rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 460;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .highlight-link:hover {
+      background: #dbb59a;
+      color: #3f2b1e;
+    }
+
+    /* 带圆角的连接感按钮 */
+    .link-button-wrapper {
+      margin: 2.2rem 0 1.2rem;
+      text-align: center;
+    }
+
+    .link-button {
+      display: inline-block;
+      background: #fff2e7;
+      border: 1px solid #dbb294;
+      padding: 0.7rem 2rem;
+      border-radius: 60px;
+      color: #6b4c34;
+      font-size: 1.2rem;
+      font-weight: 440;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 8px rgba(185, 130, 80, 0.12);
+      transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+    }
+
+    .link-button:hover {
+      background: #f3dbc9;
+      box-shadow: 0 6px 14px rgba(170, 110, 60, 0.2);
+      transform: scale(1.02);
+    }
+
+    .link-button:active {
+      transform: scale(0.97);
+    }
+
+    /* 脚注 / 小提示 */
+    .footnote {
+      margin-top: 2.8rem;
+      border-top: 1px solid #e7d4c3;
+      padding-top: 1.2rem;
+      font-size: 0.9rem;
+      color: #736251;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.6rem;
+    }
+
+    .faq-mini {
+      background: #f6efe8;
+      padding: 1rem 1.6rem;
+      border-radius: 24px;
+      margin: 1.8rem 0 1rem;
+    }
+
+    .faq-mini summary {
+      font-weight: 480;
+      color: #6d4f39;
+      cursor: pointer;
+      padding: 0.2rem 0;
+    }
+
+    .faq-mini p {
+      margin: 0.6rem 0 0;
+      font-size: 0.95rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e8cfbb;
+      margin: 1.8rem 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-card">
+    <div class="note-header">
+      <h1>资料索引手记 <small>· 整理自有</small></h1>
+      <div class="lead">从信息集合到浏览痕迹</div>
+    </div>
+
+    <div class="content">
+      <p>
+        整理网络上的资料时，我常遇到一个朴素的问题：一个感兴趣的方向，它的信息散落在各处，
+        缺少一份温和、可循的索引。游戏领域尤其如此——新消息、旧讨论、版本记录、玩家笔记……
+        内容庞杂，却很难有一个安静的地方把这些东西拢一拢。
+      </p>
+      <p>
+        后来我留意到 <a href="https://app-main-aiyouxi.com.cn" class="highlight-link">爱游戏</a> 这个站点，
+        它不像常见的门户那样铺满横幅与弹窗，而是更像一个资料夹：把不同来源的资讯、测评、版本说明收拢在一起，
+        按条目陈列。对于习惯自己动手翻找内容的人来说，这种索引式的呈现，反而让人更容易定位自己需要的片段。
+      </p>
+
+      <div class="inset-quote">
+        “好的索引不是告诉你该看什么，而是让你知道——想看的时候，去哪里能找到。”
+        <cite>—— 一位整理者手记</cite>
+      </div>
+
+      <p>
+        后来我自己也开始把零散的笔记、截图、链接碎片按主题归档。一边整理一边发现，很多游戏的细节在初次浏览时被忽略了——
+        某个版本的更新说明、某个关卡设计的思路、甚至社区里一条不起眼的讨论，都可能让理解更深一层。
+        而像 <a href="https://app-main-aiyouxi.com.cn" class="highlight-link">爱游戏</a> 这样以条目和索引为主的页面，
+        恰好提供了一种“翻目录”的节奏：不是被推送，而是自己挑选。
+      </p>
+
+      <p>
+        当然，每个人的浏览习惯不同。有人喜欢瀑布流的信息冲刷，有人偏爱安静的文本列表。
+        但从资料检索的角度而言，一个结构清晰、分类克制的索引，往往比铺满视觉元素的主页更耐读。
+        这也是为什么我后来逐渐养成了一个小习惯：遇到感兴趣的游戏主题，先去找有没有类似索引页，
+        把散落的条目过一遍，再决定从哪里深入。
+      </p>
+
+      <div class="faq-mini">
+        <details>
+          <summary>📂 一些整理时的小观察 · 摘要</summary>
+          <p>
+            ▸ 版本号与更新日志的归档，比想象中更有用，尤其是跨平台游戏。<br>
+            ▸ 玩家社区里的一些历史讨论帖，常常藏着一手体验细节。<br>
+            ▸ 索引页面的价值在于“可翻阅感”，而不是信息密度最大化。
+          </p>
+        </details>
+      </div>
+
+      <p>
+        回过头来看，资料整理这件事本身也像游戏里的收集过程：一开始只是零散拾取，慢慢拼出完整的图景。
+        如果你也喜欢自己翻找、对比、沉淀信息，或许可以试试把 <a href="https://app-main-aiyouxi.com.cn" class="highlight-link">爱游戏</a> 作为一个起点，
+        顺着索引条目走走看，说不定会发现之前没注意到的线索。
+      </p>
+    </div>
+
+    <div class="link-button-wrapper">
+      <a href="https://app-main-aiyouxi.com.cn" class="link-button">爱游戏</a>
+    </div>
+
+    <div class="footnote">
+      <span>📋 笔记 · 索引向</span>
+      <span>内容整理基于公开资料  ·  没有夸张推荐</span>
+    </div>
+  </div>
+</body>
+</html>
