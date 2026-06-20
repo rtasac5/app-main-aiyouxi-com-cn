@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>信息索引 · bet365 资料整理</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f5f9fc;
+      color: #1e2b3a;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.65;
+      padding: 20px 16px 48px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page {
+      max-width: 780px;
+      width: 100%;
+    }
+
+    /* header 区域，博客式标题 */
+    .blog-header {
+      margin: 28px 0 12px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #d0e2ed;
+    }
+
+    .blog-header h1 {
+      font-size: 2.2rem;
+      font-weight: 580;
+      letter-spacing: -0.02em;
+      color: #0f2c3d;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    .blog-header .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      font-size: 0.9rem;
+      color: #54738a;
+      margin-top: 4px;
+      align-items: center;
+    }
+
+    .meta-line span {
+      background: #e5eff5;
+      padding: 0 10px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      color: #1f4a5e;
+    }
+
+    .guide {
+      background: #e3eff6;
+      border-left: 4px solid #2a7c8c;
+      padding: 16px 18px;
+      margin: 24px 0 28px;
+      border-radius: 0 12px 12px 0;
+      font-size: 1rem;
+    }
+
+    .guide strong {
+      color: #0e4d5e;
+    }
+
+    .guide a {
+      color: #0b5b6b;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+    }
+
+    .guide a:hover {
+      background: #cfe2ed;
+      text-decoration: none;
+    }
+
+    /* 卡片网格 — 信息卡片 */
+    .grid-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin: 32px 0;
+    }
+
+    @media (min-width: 500px) {
+      .grid-cards {
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+      }
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 18px 20px 22px;
+      box-shadow: 0 4px 12px rgba(22, 65, 78, 0.06);
+      border: 1px solid #d6e4ee;
+      transition: all 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: #3e93a8;
+      box-shadow: 0 8px 14px rgba(40, 110, 130, 0.08);
+      background: #fafffe;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 530;
+      color: #0f3b4a;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card h3::before {
+      content: "📋";
+      font-size: 1.1rem;
+      margin-right: 2px;
+    }
+
+    .card p {
+      font-size: 0.96rem;
+      color: #2c4b5c;
+      margin-bottom: 10px;
+    }
+
+    .card .tag {
+      display: inline-block;
+      background: #d8eaf3;
+      color: #174f61;
+      padding: 0 14px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    .insight-block {
+      background: #f0f8fc;
+      padding: 24px 22px;
+      border-radius: 28px;
+      margin: 28px 0 22px;
+      border: 1px solid #bbd7e8;
+    }
+
+    .insight-block blockquote {
+      font-style: normal;
+      padding: 8px 0 8px 20px;
+      border-left: 4px solid #2a889b;
+      color: #1a4b5a;
+      margin: 14px 0;
+      font-size: 1.04rem;
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 0 8px 8px 0;
+      line-height: 1.6;
+    }
+
+    .insight-block .ref-note {
+      font-size: 0.9rem;
+      color: #386f81;
+      margin-top: 12px;
+      border-top: 1px dashed #b3cfdf;
+      padding-top: 14px;
+    }
+
+    .insight-block a {
+      color: #106472;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      font-weight: 500;
+    }
+
+    .insight-block a:hover {
+      background: #c0dceb;
+    }
+
+    .faq-mini {
+      margin: 30px 0 20px;
+      background: #ffffff;
+      border-radius: 30px;
+      padding: 18px 24px 24px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      border: 1px solid #cbdfeb;
+    }
+
+    .faq-mini h4 {
+      font-size: 1.1rem;
+      font-weight: 510;
+      color: #0f3b48;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .faq-mini h4::before {
+      content: "❓";
+      font-size: 1.1rem;
+    }
+
+    .faq-item {
+      padding: 10px 0;
+      border-bottom: 1px solid #e4edf4;
+    }
+
+    .faq-item:last-child {
+      border-bottom: 0;
+    }
+
+    .faq-item .q {
+      font-weight: 530;
+      color: #174d5c;
+    }
+
+    .faq-item .a {
+      color: #2b5669;
+      font-size: 0.95rem;
+      margin-top: 3px;
+      padding-left: 6px;
+    }
+
+    .footer-note {
+      margin-top: 40px;
+      font-size: 0.85rem;
+      color: #5b7d8e;
+      border-top: 1px solid #cddee9;
+      padding-top: 22px;
+      text-align: center;
+    }
+
+    .footer-note a {
+      color: #0a5b6b;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 博客式标题 -->
+  <header class="blog-header">
+    <h1>资料整理：bet365 平台信息索引</h1>
+    <div class="meta-line">
+      <span>索引笔记</span>
+      <span>2025 · 整理篇</span>
+      <span>结构梳理</span>
+    </div>
+  </header>
+
+  <!-- 导语 / 切入点 -->
+  <div class="guide">
+    <strong>从资料整理的角度</strong> —— 本页围绕 <a href="https://m-site-bet365.com">bet365</a> 聚合公开可查的信息片段，按功能模块、使用场景、常见术语进行分类。不构成任何操作建议，仅作为索引参考。
+  </div>
+
+  <!-- 正文段落 承接导语 -->
+  <p style="margin-bottom: 16px; font-size: 1.02rem;">
+    在信息收集过程中，<a href="https://m-site-bet365.com">bet365</a> 常出现在体育赛事数据、实时赔率以及账户功能等讨论中。以下卡片整理了不同维度的公开资料，便于快速查阅相关模块的常见描述。
+  </p>
+
+  <!-- 网格卡片：四个信息卡片 -->
+  <div class="grid-cards">
+    <div class="card">
+      <h3>账户与安全</h3>
+      <p>注册流程、身份验证、账户设置、多设备登录、隐私保护条款等常见文档索引。很多用户关注账户关联方式及安全验证步骤。</p>
+      <span class="tag">基础</span>
+    </div>
+    <div class="card">
+      <h3>投注与赛事</h3>
+      <p>覆盖主流联赛、杯赛、电竞赛事。投注类型包括独赢、让球、大小、串关等。实时数据更新频率及结算说明。</p>
+      <span class="tag">体育</span>
+    </div>
+    <div class="card">
+      <h3>支付与流水</h3>
+      <p>存款、提现、货币支持、手续费说明、到账时长。不同地区支付方式存在差异，建议查阅当地支持列表。</p>
+      <span class="tag">财务</span>
+    </div>
+    <div class="card">
+      <h3>条款与责任</h3>
+      <p>一般条款、奖金规则、使用限制、争议解决。部分内容涉及不同司法辖区合规说明，建议自行核对最新版本。</p>
+      <span class="tag">政策</span>
+    </div>
+  </div>
+
+  <!-- 引用提示 与 正文承接 -->
+  <div class="insight-block">
+    <p style="font-weight: 450; margin-bottom: 6px;">📌 信息引用提示</p>
+    <blockquote>
+      “bet365 作为一家运营多年的在线平台，其公开资料中包含大量关于赛事覆盖、账户管理以及支付选项的说明。资料来源多为平台帮助中心及第三方索引站，建议结合自身需求交叉验证。”
+    </blockquote>
+    <div class="ref-note">
+      ⚡ 部分功能描述可能存在版本滞后，如需查阅最新帮助内容，可直接检索 <a href="https://m-site-bet365.com">bet365</a> 支持页面。本页仅作索引目录，不存储任何操作数据。
+    </div>
+  </div>
+
+  <!-- 场景/段落 自然过渡 -->
+  <p style="margin: 20px 0 10px;">
+    从资料整理的经验来看，很多新用户会先关注基础功能模块，例如账户创建、货币设置以及如何浏览不同赛事。而有一定经验的用户更关心赔率变动逻辑和结算周期。以下FAQ摘要收集了被反复提及的几个问题，均基于公开资料归纳。
+  </p>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-mini">
+    <h4>常见索引问题（FAQ摘要）</h4>
+    <div class="faq-item">
+      <div class="q">Q：bet365 支持哪些语言界面？</div>
+      <div class="a">根据公开帮助页面，主要提供超过 20 种语言选项，包括中文、英文、日语、泰语等，具体以登录后设置为准。</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">Q：赛事数据更新频率是否有公开说明？</div>
+      <div class="a">多数联赛采用实时数据流，但不同赛事更新节奏存在差异，部分小众赛事可能延迟。建议查阅具体体育项目说明。</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">Q：账户安全相关的建议？</div>
+      <div class="a">启用双重验证、定期修改密码、不共享账户信息。<a href="https://m-site-bet365.com">bet365</a> 官方帮助中心有专门的安全指南章节。</div>
+    </div>
+  </div>
+
+  <!-- 访问句 (自然嵌入) -->
+  <p style="background: #e7f0f6; padding: 14px 18px; border-radius: 40px; margin: 18px 0 10px; font-size: 1rem;">
+    📎 若需查阅原始文档或最新界面，可直接前往 <a href="https://m-site-bet365.com">bet365</a> 获得一手资料。本索引仅收录部分公开信息，内容保持克制，不包含任何操作指导或推荐。
+  </p>
+
+  <!-- 结尾 -->
+  <div class="footer-note">
+    基于公开资料整理 · 仅供索引参考<br>
+    <span style="opacity: 0.6;">版本索引 · 2025</span>
+  </div>
+
+</div>
+</body>
+</html>
